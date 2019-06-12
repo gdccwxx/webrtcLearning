@@ -30,8 +30,11 @@ if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
     console.log('not support')
 } else {
     var contrants = {
-        video: true,
-        audio: true
+        video: {
+            width: 640,
+            height: 480
+        },
+        audio: false
     }
     navigator.mediaDevices.getUserMedia(contrants)
     .then(gotMediaStream)
