@@ -26,9 +26,12 @@ function gotDevices(deviceInfos) {
 function handleError(err) {
     console.log('getUserMedia err: '+ err)
 }
+function start() {
 if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
     console.log('not support')
 } else {
+    var deviceId = vidioSource.value
+    console.log(vidioSource)
     var contrants = {
         video: {
             width: 320,
@@ -39,10 +42,15 @@ if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         audio: {
             noiseSuppression: true,
             echoCancellation: true
-        }
+        },
+        deviceId: deviceId ? deviceId : undefined
     }
     navigator.mediaDevices.getUserMedia(contrants)
     .then(gotMediaStream)
     .then(gotDevices)
     .catch(handleError)
 }
+}
+start()
+
+vidioSource.onchange = start
