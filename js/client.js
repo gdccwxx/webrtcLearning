@@ -31,10 +31,15 @@ if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
 } else {
     var contrants = {
         video: {
-            width: 640,
-            height: 480
+            width: 320,
+            height: 240,
+            frameRate: 30,
+            facingMode: 'enviroment'
         },
-        audio: false
+        audio: {
+            noiseSuppression: true,
+            echoCancellation: true
+        }
     }
     navigator.mediaDevices.getUserMedia(contrants)
     .then(gotMediaStream)
