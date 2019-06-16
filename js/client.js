@@ -97,7 +97,7 @@ function startRecord() {
         return
     }
     try {
-        mediaRecorder = new MediaRecorder(window.stream, options.mimeType)
+        mediaRecorder = new MediaRecorder(window.stream)
     } catch(error) {
         console.error('faild to create mediarecorder', error)
         return 
